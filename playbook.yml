@@ -3,9 +3,16 @@
 - hosts: localhost
   connection: local
 
+  vars:
+    working_dir: "{{ playbook_dir }}/generated"
+
   pre_tasks:
-    - name: delete working directory
-      file: path="{{ playbook_dir }}/generated" state=absent
+
+    - name: Deletes working directory
+      file: path="{{ working_dir }}" state=absent
+
+    - name: Creates working directory
+      file: path="{{ working_dir }}" state=directory
 
   roles:
     - vagrant-virtual-machines
