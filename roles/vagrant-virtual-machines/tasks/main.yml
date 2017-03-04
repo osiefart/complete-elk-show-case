@@ -12,3 +12,10 @@
     name: virtualbox
     state: present
 
+- name: create vm directories
+  file: path="{{ working_dir }}/{{ hostvars[item].name }}" state=directory
+  with_items: groups['servers']
+
+- name: create vagrant vm configs
+  template: src=Vagrantfile.j2 dest="{{ working_dir }}/{{ hostvars[item].name }}/Vagrantfile" mode=0700
+  with_items: groups['servers']
