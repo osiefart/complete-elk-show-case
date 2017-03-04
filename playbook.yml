@@ -1,0 +1,11 @@
+---
+
+- hosts: localhost
+  connection: local
+
+  pre_tasks:
+    - name: delete working directory
+      file: path="{{ playbook_dir }}/generated" state=absent
+
+  roles:
+    - vagrant-virtual-machines

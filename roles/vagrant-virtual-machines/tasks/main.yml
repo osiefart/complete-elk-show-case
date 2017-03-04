@@ -1,0 +1,14 @@
+---
+
+# tap brew cask, brew services
+
+- name: install vagrant
+  homebrew_cask:
+    name: vagrant
+    state: present
+
+- name: install virtualbox
+  homebrew_cask:
+    name: virtualbox
+    state: present
+
