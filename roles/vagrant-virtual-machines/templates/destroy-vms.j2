@@ -1,0 +1,13 @@
+#!/bin/sh
+
+{% for host in groups['servers'] %}
+
+echo "destroy vm: {{ hostvars[host].name }}"
+cd {{ working_dir }}/{{ hostvars[host].name }}
+vagrant destroy
+
+{% endfor %}
+
+
+
+
